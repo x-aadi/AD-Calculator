@@ -1,0 +1,22 @@
+{
+  "name": "aadionx Calculator",
+  "short_name": "AD-Calculator",
+  "description": "Premium calculator by aadionx",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

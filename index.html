@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#667eea">
+    <title>aadionx Calculator</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="calc-card">
+            <!-- Top Right Buttons -->
+            <div class="top-right">
+                <button id="theme-toggle">🌙</button>
+                <button id="mute-btn">🔊</button>
+                <button id="history-btn">📜</button>
+            </div>
+
+            <!-- History Panel -->
+            <div id="history-panel" class="history-panel hidden">
+                <div class="history-header">
+                    <h3>aadionx History</h3>
+                    <button id="close-history">✕</button>
+                </div>
+                <div id="history-list" class="history-list"></div>
+                <button id="clear-history" class="clear-history-btn">Clear History</button>
+            </div>
+
+            <!-- Display -->
+            <div class="display" id="display">0</div>
+
+            <!-- Buttons Grid -->
+            <div class="buttons">
+                <button class="gray" onclick="clearDisplay()">C</button>
+                <button class="gray" onclick="toggleSign()">+/-</button>
+                <button class="gray" onclick="appendToDisplay('%')">%</button>
+                <button class="operator" onclick="appendToDisplay('/')">÷</button>
+
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button class="operator" onclick="appendToDisplay('*')">×</button>
+
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button class="operator" onclick="appendToDisplay('-')">−</button>
+
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button class="operator" onclick="appendToDisplay('+')">+</button>
+
+                <button class="zero" onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('.')">.</button>
+                <button class="equals" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    touch-action: manipulation;
+}
+
+/* ================= HTML BODY ================= */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ================= BACKGROUND ================= */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    transition: background 0.6s ease;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(252, 70, 107, 0.3) 0%, transparent 50%);
+    animation: bgShift 15s ease infinite;
+    transition: all 0.6s ease;
+}
+
+@keyframes bgShift {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ================= CALCULATOR ================= */
+.calculator {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= CARD ================= */
+.calc-card {
+    width: 340px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    padding: 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: cardFloat 6s ease-in-out infinite;
+    transition: all 0.6s ease;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ================= TOP RIGHT BUTTONS ================= */
+.top-right {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.top-right button {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(102, 126, 234, 0.1);
+    font-size: 1.1rem;
+    color: #667eea;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.top-right button:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: scale(1.05);
+}
+
+.top-right button:active {
+    transform: scale(0.95);
+}
+
+/* ================= DISPLAY ================= */
+.display {
+    text-align: right;
+    font-size: 3.2rem;
+    font-weight: 300;
+    margin: 50px 0 28px;
+    color: #2d3748;
+    min-height: 70px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    word-break: break-all;
+    letter-spacing: -1px;
+    transition: all 0.3s ease;
+}
+
+/* ================= BUTTON GRID ================= */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+/* ================= COMMON BUTTON ================= */
+button {
+    height: 64px;
+    border: none;
+    border-radius: 18px;
+    font-size: 1.35rem;
+    font-weight: 500;
+    background: #ffffff;
+    color: #2d3748;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 14px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.12),
+        0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+button:active::before {
+    width: 200%;
+    height: 200%;
+}
+
+/* ================= OPERATOR ================= */
+.operator {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.operator:hover {
+    box-shadow: 
+        0 6px 20px rgba(102, 126, 234, 0.4),
+        0 2px 6px rgba(102, 126, 234, 0.2);
+}
+
+/* ================= EQUALS ================= */
+.equals {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: #ffffff;
+    grid-row: span 2;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.equals:hover {
+    box-shadow: 
+        0 8px 24px rgba(245, 87, 108, 0.4),
+        0 4px 8px rgba(245, 87, 108, 0.2);
+}
+
+/* ================= ZERO ================= */
+.zero {
+    grid-column: span 2;
+}
+
+/* ================= HISTORY PANEL ================= */
+.history-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    padding: 24px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #2d3748;
+    font-size: 1.5rem;
+}
+
+#close-history {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+}
+
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    text-align: right;
+    font-size: 1.6rem;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+.history-list p {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 12px;
+}
+
+.clear-history-btn {
+    background: linear-gradient(135deg, #f5576c, #f093fb);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 18px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* ================= DARK MODE ================= */
+body.dark {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+body.dark::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(88, 86, 214, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 103, 132, 0.2) 0%, transparent 50%);
+}
+
+body.dark .calc-card {
+    background: rgba(30, 30, 46, 0.95);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark .display {
+    color: #e2e8f0;
+}
+
+body.dark button {
+    background: rgba(45, 45, 68, 0.8);
+    color: #e2e8f0;
+    box-shadow: 
+        0 4px 14px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.dark button::before {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+body.dark .operator {
+    background: linear-gradient(135deg, #5856d6 0%, #a855f7 100%);
+    color: #ffffff;
+}
+
+body.dark .operator:hover {
+    box-shadow: 
+        0 6px 20px rgba(88, 86, 214, 0.5),
+        0 2px 6px rgba(88, 86, 214, 0.3);
+}
+
+body.dark .equals {
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+}
+
+body.dark .equals:hover {
+    box-shadow: 
+        0 8px 24px rgba(236, 72, 153, 0.5),
+        0 4px 8px rgba(236, 72, 153, 0.3);
+}
+
+body.dark .top-right button {
+    background: rgba(88, 86, 214, 0.15);
+    color: #a5b4fc;
+}
+
+body.dark .top-right button:hover {
+    background: rgba(88, 86, 214, 0.25);
+}
+
+/* Dark mode for history panel */
+body.dark .history-panel {
+    background: rgba(30, 30, 46, 0.95);
+}
+
+body.dark .history-header {
+    color: #e2e8f0;
+}
+
+body.dark .history-list {
+    color: #cbd5e0;
+}
+
+body.dark .history-list p {
+    background: rgba(88, 86, 214, 0.1);
+}
+
+body.dark .clear-history-btn {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+/* ================= SMALL SCREEN SAFE ================= */
+@media (max-width: 380px) {
+    .calc-card {
+        width: 92vw;
+        padding: 20px;
+    }
+    
+    .display {
+        font-size: 2.6rem;
+        min-height: 60px;
+    }
+    
+    button {
+        height: 58px;
+        font-size: 1.2rem;
+    }
+    
+    .buttons {
+        gap: 12px;
+    }
+}
+
+@media (max-height: 700px) {
+    .calc-card {
+        padding: 18px;
+    }
+    
+    .display {
+        margin: 40px 0 20px;
+        font-size: 2.8rem;
+        min-height: 55px;
+    }
+    
+    button {
+        height: 54px;
+    }
+}
+
+/* ================= ACCESSIBILITY ================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ================= SMOOTH TRANSITIONS ================= */
+body,
+.calc-card,
+button,
+.display {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
